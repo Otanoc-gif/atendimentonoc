@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOC Suporte - Atendimento Interno</title>
+  <title>ATNOC - Painel de Atendimento</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <aside class="sidebar">
     <div class="brand">
       <div class="brand-icon">NOC</div>
       <div>
-        <h1>Suporte ISP</h1>
+        <h1>ATNOC</h1>
         <p>Painel interno</p>
       </div>
     </div>
@@ -27,7 +28,6 @@
   <main class="main">
     <div class="privacy-alert">
       ⚠️ Não inserir CPF, senha, telefone, e-mail, endereço completo ou dados financeiros.
-      Use apenas nome, código interno, bairro e informações técnicas mínimas.
     </div>
 
     <section id="registro" class="view active">
@@ -43,11 +43,11 @@
           </label>
 
           <label>Nome do cliente ou código interno
-            <input id="cliente" type="text" placeholder="Ex: João / Cód. 12345" />
+            <input id="cliente" type="text" />
           </label>
 
           <label>Bairro
-            <input id="bairro" type="text" placeholder="Opcional" />
+            <input id="bairro" type="text" />
           </label>
 
           <label>Tipo de atendimento
@@ -55,7 +55,7 @@
           </label>
 
           <label>Subtipo do problema
-            <input id="subtipo" type="text" placeholder="Ex: WhatsApp lento, ONU sem sinal..." />
+            <input id="subtipo" type="text" />
           </label>
 
           <label>Status
@@ -72,23 +72,23 @@
           </label>
 
           <label>Atendente
-            <input id="atendente" type="text" placeholder="Seu nome" />
+            <input id="atendente" type="text" />
           </label>
 
           <label class="full">Resumo do atendimento
-            <textarea id="resumo" placeholder="Cliente entrou em contato informando..."></textarea>
+            <textarea id="resumo"></textarea>
           </label>
 
           <label class="full">Testes realizados
-            <textarea id="testes" placeholder="Ping, reinicialização, teste cabeado, sinal, Wi-Fi..."></textarea>
+            <textarea id="testes"></textarea>
           </label>
 
           <label class="full">Diagnóstico provável
-            <textarea id="diagnostico" placeholder="Possível lentidão Wi-Fi, rompimento, equipamento travado..."></textarea>
+            <textarea id="diagnostico"></textarea>
           </label>
 
           <label class="full">Ação tomada
-            <textarea id="acao" placeholder="Orientado cliente, aberto OS, encaminhado técnico..."></textarea>
+            <textarea id="acao"></textarea>
           </label>
 
           <div class="actions full">
@@ -100,7 +100,7 @@
 
         <div class="card">
           <h3>Texto gerado para OS</h3>
-          <textarea id="textoOS" class="output" placeholder="O texto profissional será gerado aqui..."></textarea>
+          <textarea id="textoOS" class="output"></textarea>
           <button class="copy-btn" data-copy="textoOS">Copiar texto da OS</button>
 
           <h3>Últimos atendimentos</h3>
@@ -112,7 +112,6 @@
     <section id="mensagens" class="view">
       <header class="page-header">
         <h2>Mensagens prontas</h2>
-        <p>Clique em copiar para usar no atendimento.</p>
       </header>
       <div id="mensagensProntas" class="message-grid"></div>
     </section>
@@ -120,22 +119,25 @@
     <section id="relatorio" class="view">
       <header class="page-header">
         <h2>Relatório diário</h2>
-        <p>Filtre, copie, exporte ou imprima os atendimentos.</p>
       </header>
 
       <div class="card filters">
         <label>Data
           <input type="date" id="filtroData" />
         </label>
+
         <label>Tipo
           <select id="filtroTipo"></select>
         </label>
+
         <label>Status
           <select id="filtroStatus"></select>
         </label>
+
         <label>Atendente
-          <input type="text" id="filtroAtendente" placeholder="Filtrar por atendente" />
+          <input type="text" id="filtroAtendente" />
         </label>
+
         <button id="limparFiltros">Limpar filtros</button>
       </div>
 
@@ -150,6 +152,7 @@
           <h3>Quantidade por tipo</h3>
           <div id="porTipo"></div>
         </div>
+
         <div class="card">
           <h3>Quantidade por status</h3>
           <div id="porStatus"></div>
@@ -158,11 +161,12 @@
 
       <div class="card">
         <div class="actions">
-          <button id="copiarRelatorio">Copiar relatório do dia</button>
+          <button id="copiarRelatorio">Copiar relatório</button>
           <button id="exportarCSV">Exportar CSV</button>
-          <button id="imprimirRelatorio">Imprimir relatório</button>
-          <button id="gerarPassagem">Gerar resumo para passagem de turno</button>
+          <button id="imprimirRelatorio">Imprimir</button>
+          <button id="gerarPassagem">Gerar passagem</button>
         </div>
+
         <div id="listaRelatorio" class="table-wrap"></div>
       </div>
     </section>
@@ -170,7 +174,6 @@
     <section id="turno" class="view">
       <header class="page-header">
         <h2>Passagem de turno</h2>
-        <p>Controle rápido para o próximo atendente.</p>
       </header>
 
       <div class="grid two">
@@ -178,24 +181,29 @@
           <label>Clientes pendentes
             <textarea id="turnoPendentes"></textarea>
           </label>
+
           <label>Clientes para retorno
             <textarea id="turnoRetorno"></textarea>
           </label>
+
           <label>Rompimentos ativos
             <textarea id="turnoRompimentos"></textarea>
           </label>
         </div>
+
         <div class="card">
           <label>Técnicos em campo
             <textarea id="turnoTecnicos"></textarea>
           </label>
+
           <label>Observações importantes
             <textarea id="turnoObs"></textarea>
           </label>
+
           <div class="actions">
             <button id="salvarTurno" class="success">Salvar passagem</button>
             <button id="copiarTurno">Copiar passagem</button>
-            <button id="limparTurno">Limpar passagem</button>
+            <button id="limparTurno">Limpar</button>
           </div>
         </div>
       </div>
@@ -204,7 +212,6 @@
     <section id="monitoramento" class="view">
       <header class="page-header">
         <h2>Monitoramento externo</h2>
-        <p>Sem API: use atalhos e registre alertas manualmente.</p>
       </header>
 
       <div class="quick-links card">
@@ -218,20 +225,25 @@
         <label>POP afetado
           <input id="popAfetado" type="text" />
         </label>
+
         <label>Bairro afetado
           <input id="bairroAfetado" type="text" />
         </label>
+
         <label>Horário do alerta
           <input id="horarioAlerta" type="time" />
         </label>
+
         <label>Impacto observado
-          <input id="impactoObservado" type="text" placeholder="Ex: clientes offline, perda, latência..." />
+          <input id="impactoObservado" type="text" />
         </label>
+
         <label class="full">Descrição do alerta
           <textarea id="descricaoAlerta"></textarea>
         </label>
+
         <div class="actions full">
-          <button class="success" type="submit">Salvar alerta observado</button>
+          <button class="success" type="submit">Salvar alerta</button>
         </div>
       </form>
 
@@ -244,23 +256,21 @@
     <section id="seguranca" class="view">
       <header class="page-header">
         <h2>Segurança e privacidade</h2>
-        <p>Controles locais do navegador.</p>
       </header>
 
       <div class="card danger-zone">
-        <h3>Regras</h3>
-        <p>Não salve CPF, senha, telefone, e-mail, endereço completo ou dados financeiros.</p>
-        <p>O sistema usa apenas <strong>localStorage</strong>, ou seja, os dados ficam no navegador deste computador.</p>
+        <p>Não salvar CPF, senha, telefone, e-mail, endereço completo ou dados financeiros.</p>
 
         <div class="actions">
           <button id="apagarDia" class="danger">Apagar registros do dia</button>
-          <button id="limparStorage" class="danger">Limpar todo localStorage</button>
+          <button id="limparStorage" class="danger">Limpar localStorage</button>
         </div>
       </div>
     </section>
   </main>
 
   <div id="toast" class="toast">Copiado!</div>
+
   <script type="module" src="script.js"></script>
 </body>
 </html>
