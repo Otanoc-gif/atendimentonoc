@@ -1,3 +1,18 @@
+import {
+  auth,
+  db,
+  onAuthStateChanged,
+  signOut,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  serverTimestamp
+} from "./firebase.js";
+
 const STORAGE_KEYS = {
   atendimentos: "noc_atendimentos",
   turno: "noc_passagem_turno",
