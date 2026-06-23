@@ -2,17 +2,24 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/fireba
 
 import {
   getAuth,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
 import {
-  getFirestore
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCYsmBqDE-e-Q9dnekUiJKpmtSrM4vRifg",
+  apiKey: "SUA_API_KEY",
   authDomain: "atnoc-3ff7c.firebaseapp.com",
   projectId: "atnoc-3ff7c",
   storageBucket: "atnoc-3ff7c.firebasestorage.app",
@@ -22,14 +29,20 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 export {
   auth,
   db,
-  signInWithEmailAndPassword,
+  onAuthStateChanged,
   signOut,
-  onAuthStateChanged
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  query,
+  orderBy,
+  serverTimestamp
 };
