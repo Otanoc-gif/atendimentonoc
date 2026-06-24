@@ -19,7 +19,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
+  apiKey: apiKey: "AIzaSyCYsmBqDE-e-Q9dnekUiJKpmtSrM4vRifg",
   authDomain: "atnoc-3ff7c.firebaseapp.com",
   projectId: "atnoc-3ff7c",
   storageBucket: "atnoc-3ff7c.firebasestorage.app",
