@@ -28,7 +28,8 @@
 
   <main class="main">
     <div class="privacy-alert">
-      ⚠️ Não inserir CPF, senha, telefone, e-mail, endereço completo ou dados financeiros.
+      ⚠️ Não inserir CPF, senha, e-mail, endereço completo ou dados financeiros.
+      Use apenas dados mínimos para controle interno.
     </div>
 
     <section id="registro" class="view active">
@@ -111,15 +112,41 @@
     </section>
 
     <section id="fila" class="view">
-      <header class="page-header">
-        <h2>Atendimentos em andamento</h2>
-        <p>Controle clientes ativos e evite esquecer retornos durante a fila.</p>
+      <header class="page-header fila-topo">
+        <div>
+          <h2>Atendimentos em andamento</h2>
+          <p>Controle clientes ativos, tempo de atendimento e alertas de retorno.</p>
+        </div>
+
+        <button class="success" id="abrirModalFila">
+          + Abrir atendimento
+        </button>
       </header>
 
-      <div class="card">
-        <div class="grid two">
-          <label>Cliente ou código interno
-            <input type="text" id="filaCliente" placeholder="Ex: João / Cód. 12345" />
+      <div class="fila-layout">
+        <div class="card fila-lateral">
+          <h3>Atendimentos ativos</h3>
+          <div id="filaContainer" class="fila-container"></div>
+        </div>
+
+        <div class="card fila-detalhes" id="filaDetalhes">
+          <div class="fila-vazio">
+            <h3>Selecione um atendimento</h3>
+            <p>Clique em um atendimento à esquerda para visualizar detalhes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="modalFila" class="modal-fila">
+        <div class="modal-fila-card">
+          <h3>Novo atendimento</h3>
+
+          <label>Nome do contato
+            <input type="text" id="filaCliente" placeholder="Ex: João / Maria / Código interno" />
+          </label>
+
+          <label>Número de telefone
+            <input type="text" id="filaTelefone" placeholder="Opcional" />
           </label>
 
           <label>Tipo
@@ -138,17 +165,16 @@
             </select>
           </label>
 
-          <label class="full">Observação rápida
-            <textarea id="filaObs" placeholder="Ex: cliente aguardando teste, pediu retorno, sem acesso remoto..."></textarea>
+          <label>Observação inicial
+            <textarea id="filaObs" placeholder="Ex: cliente aguardando teste, sem acesso remoto..."></textarea>
           </label>
-        </div>
 
-        <div class="actions">
-          <button class="success" id="adicionarFila">Adicionar atendimento em andamento</button>
+          <div class="actions">
+            <button class="success" id="adicionarFila">Iniciar atendimento</button>
+            <button id="fecharModalFila">Cancelar</button>
+          </div>
         </div>
       </div>
-
-      <div id="filaContainer" class="fila-container"></div>
     </section>
 
     <section id="mensagens" class="view">
@@ -301,7 +327,7 @@
       </header>
 
       <div class="card danger-zone">
-        <p>Não salvar CPF, senha, telefone, e-mail, endereço completo ou dados financeiros.</p>
+        <p>Não salvar CPF, senha, e-mail, endereço completo ou dados financeiros.</p>
 
         <div class="actions">
           <button id="apagarDia" class="danger">Apagar registros do dia</button>
