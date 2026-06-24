@@ -417,3 +417,46 @@ th {
   margin: 0;
   text-align: center;
 }
+
+.fila-container{
+    display:grid;
+    gap:15px;
+    margin-top:20px;
+}
+
+.fila-card{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:10px;
+    padding:15px;
+}
+
+.fila-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.fila-tempo{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.fila-normal{
+    color:#4ade80;
+}
+
+.fila-alerta{
+    color:#facc15;
+}
+
+.fila-critico{
+    color:#ef4444;
+}
+
+.fila-botoes{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
