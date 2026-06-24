@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - ATNOC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-body">
+
+  <main class="login-container">
+    <section class="login-card">
+      <div class="brand login-brand">
+        <div class="brand-icon">NOC</div>
+        <div>
+          <h1>ATNOC</h1>
+          <p>Acesso interno</p>
+        </div>
+      </div>
+
+      <div class="privacy-alert">
+        Acesso restrito a colaboradores autorizados.
+      </div>
+
+      <form id="loginForm">
+        <label>E-mail ou usuário
+          <input id="loginEmail" type="text" placeholder="otavio@tcf.com.br" required />
+        </label>
+
+        <label>Senha
+          <input id="loginSenha" type="password" placeholder="Digite sua senha" required />
+        </label>
+
+        <button class="primary login-btn" type="submit">Entrar</button>
+
+        <p id="loginErro" class="login-error"></p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>
