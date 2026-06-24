@@ -612,3 +612,115 @@ function init() {
 window.copyText = copyText;
 
 document.addEventListener("DOMContentLoaded", init);
+
+let filaAtendimentos =
+JSON.parse(localStorage.getItem("filaAtendimentos")) || [];
+
+function salvarFila(){
+    localStorage.setItem(
+        "filaAtendimentos",
+        JSON.stringify(filaAtendimentos)
+    );
+
+    renderFila();
+}
+
+function adicionarFila(){
+
+    const cliente =
+    document.getElementById("filaCliente").value;
+
+    const tipo =
+    document.getElementById("filaTipo").value;
+
+    if(!cliente){
+        alert("Informe o cliente.");
+        return;
+    }
+
+    filaAtendimentos.push({
+        id:Date.now(),
+        cliente,
+        tipo,
+        inicio:new Date().getTime()
+    });
+
+    document.getElementById("filaCliente").value="";
+
+    salvarFila();
+}
+
+function finalizarFila(id){
+
+    filaAtendimentos =
+    filaAtendimentos.filter(x=>x.id!==id);
+
+    salvarFila();
+}
+
+function renderFila(){
+
+    const container =
+    document.getElementById("filaContainer");
+
+    if(!container) return;
+
+    container.innerHTML="";
+
+    filaAtendimentos.forEach(item=>{
+
+        const minutos =
+        Math.floor(
+            (Date.now()-item.inicio)/60000
+        );
+
+        const segundos =
+        Math.floor(
+            ((Date.now()-item.inicio)%60000)/1000
+        );
+
+        let classe="fila-normal";
+
+        if(minutos>=2)
+            classe="fila-alerta";
+
+        if(minutos>=5)
+            classe="fila-critico";
+
+        const div =
+        document.createElement("div");
+
+        div.className="fila-card";
+
+        div.innerHTML=`
+            <div class="fila-header">
+                <h3>${item.cliente}</h3>
+                <span>${item.tipo}</span>
+            </div>
+
+            <div class="fila-tempo ${classe}">
+                ${String(minutos).padStart(2,'0')}
+                :
+                ${String(segundos).padStart(2,'0')}
+            </div>
+
+            <div class="fila-botoes">
+                <button onclick="finalizarFila(${item.id})">
+                    Finalizar
+                </button>
+            </div>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+document
+.getElementById("adicionarFila")
+?.addEventListener("click", adicionarFila);
+
+window.finalizarFila = finalizarFila;
+
+setInterval(renderFila,1000);
+
+renderFila();
