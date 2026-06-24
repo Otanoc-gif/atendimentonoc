@@ -18,6 +18,7 @@
     </div>
 
     <button class="nav-btn active" data-view="registro">Atendimento</button>
+    <button class="nav-btn" data-view="fila">Em Atendimento</button>
     <button class="nav-btn" data-view="mensagens">Mensagens</button>
     <button class="nav-btn" data-view="relatorio">Relatório</button>
     <button class="nav-btn" data-view="turno">Passagem</button>
@@ -107,6 +108,47 @@
           <div id="ultimosAtendimentos" class="mini-list"></div>
         </div>
       </div>
+    </section>
+
+    <section id="fila" class="view">
+      <header class="page-header">
+        <h2>Atendimentos em andamento</h2>
+        <p>Controle clientes ativos e evite esquecer retornos durante a fila.</p>
+      </header>
+
+      <div class="card">
+        <div class="grid two">
+          <label>Cliente ou código interno
+            <input type="text" id="filaCliente" placeholder="Ex: João / Cód. 12345" />
+          </label>
+
+          <label>Tipo
+            <select id="filaTipo">
+              <option>Lentidão</option>
+              <option>Sem conexão</option>
+              <option>Wi-Fi instável</option>
+              <option>Dúvida</option>
+              <option>Segunda via</option>
+              <option>Suporte geral</option>
+              <option>Rompimento</option>
+              <option>Financeiro</option>
+              <option>Visita técnica</option>
+              <option>Cancelamento</option>
+              <option>Retorno ao cliente</option>
+            </select>
+          </label>
+
+          <label class="full">Observação rápida
+            <textarea id="filaObs" placeholder="Ex: cliente aguardando teste, pediu retorno, sem acesso remoto..."></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="success" id="adicionarFila">Adicionar atendimento em andamento</button>
+        </div>
+      </div>
+
+      <div id="filaContainer" class="fila-container"></div>
     </section>
 
     <section id="mensagens" class="view">
